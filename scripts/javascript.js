@@ -2,17 +2,18 @@ const gridContainer = document.querySelector('#etch-a-sketch-container');
 const gridItems = document.querySelectorAll('.grid-item');
 const wheel = document.getElementById('color-wheel');
 const currentColor = document.getElementById('selected-color-display');
+
 const clearButton = document.querySelector('#clear');
-const gridLineButton = document.querySelector('#grid-lines')
+const gridLineButton = document.querySelector('#grid-lines');
+
+const gridSizeSector = document.getElementById('grid-size-selector');
+
 let size = 16;
-let gridPxSize = size**2;
-let pxSize = 1
-let colorPicked = 'white'
+let pxSize = 1;
+let colorPicked = 'white';
 
 
-// Update grid CSS
-gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
 
 
 // Variable to track if mouse is pressed
@@ -31,7 +32,18 @@ gridLineButton.addEventListener('click', () => {
     GridLineUpdate();
 })
 
-function BuildGrid() {
+// Drop downs
+gridSizeSector.addEventListener('change', function() {
+    const selectedOption = this.value;
+
+    ChangeGridSize(selectedOption);
+})
+
+function BuildGrid(size) {
+    // Update grid CSS
+    gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    let gridPxSize = size**2;
     for (let i = 0; i < gridPxSize; i++) {
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
@@ -50,10 +62,30 @@ function BuildGrid() {
 function ClearGrid() {
     const gridItems = document.querySelectorAll('.grid-item');
     gridItems.forEach(gridItem => {
-        gridItem.style.backgroundColor = 'black';
-        gridItem.style.border = `solid white ${pxSize}px`;
-    })
+        gridContainer.removeChild(gridItem);
+    });
+    BuildGrid(size);
 }
+
+function ChangeGridSize(option) {
+    switch(option) {
+        case '8':
+            size = 8;
+            break;
+        case '16':
+            size = 16;
+            break;
+        case '32':
+            size = 32;
+            break;
+        case '64':
+            size = 65;
+            break;
+        }
+        
+
+        ClearGrid();
+    }
 
 function GridLineUpdate() {
     if (pxSize === 1) {
@@ -105,4 +137,4 @@ function createColorWheel() {
 }
 
 createColorWheel();
-BuildGrid();
+BuildGrid(size);

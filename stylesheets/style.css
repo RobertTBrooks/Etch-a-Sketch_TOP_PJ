@@ -9,6 +9,8 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    width: 512px;
+    height: 512px;
 }
 
 #container {
@@ -20,8 +22,7 @@
 
 .grid-item {
     background-color: black;
-    width: 16px;
-    height: 16px;
+    
     
 }
 
