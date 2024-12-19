@@ -1,3 +1,11 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
 #etch-a-sketch-container {
     display: grid;
     border: solid black 2px;
@@ -47,7 +55,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    height: 100vh; /* Full viewport height */
+    margin-bottom: 20px;
 }
 
 #outer-box {
@@ -55,10 +63,17 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    flex-direction: column;
+    margin: 0;
 }
 
 #selected-color-display {
     width: 50px;
     height: 50px;
     border: 1px solid black;
+    margin: 30px;
+}
+
+#buttons {
+    margin: 10px;
 }
