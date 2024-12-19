@@ -9,7 +9,7 @@ const gridLineButton = document.querySelector('#grid-lines');
 const gridSizeSector = document.getElementById('grid-size-selector');
 
 let size = 16;
-let pxSize = 1;
+let pxSize = 0;
 let colorPicked = 'white';
 
 
