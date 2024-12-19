@@ -11,6 +11,7 @@ const gridSizeSector = document.getElementById('grid-size-selector');
 let size = 16;
 let pxSize = 0;
 let colorPicked = 'white';
+currentColor.style.backgroundColor = colorPicked;
 
 
 
